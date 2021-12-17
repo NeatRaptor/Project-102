@@ -1,30 +1,38 @@
-from typing import NewType
-import cv2
-import dropbox
-import time
-import random
-import os
+def add(x, y):
+    return x + y
 
-startTime = time.time()
 
-def CreateFolder():
-    os.mkdir("class102/new")
+def sub(x, y):
+    return x - y
 
-def uploadFile(imageName):
-    accessToken = "RvSOZNTyr48AAAAAAAAAAadI9-1tBLGEBec8kZXgH62A3lP_fL_X7cwGCJ0enzWY"
-    file = imageName
-    fileFrom = file
-    fileTo = "NewFolder/" + (imageName)
-    dbx = dropbox.Dropbox(accessToken)
 
-    with open(fileFrom, 'rp') as f:
-        dbx.files_upload(f.read(), fileTo, mode=dropbox.files.writeMode.overwrite)
-        print("File Uploaded")
+def mul(x, y):
+    return x * y
 
-def main():
-    while (True):
-        if ((time.time() - startTime) >= 300):
-            name = CreateFolder()
-            uploadFile(name)
 
-main()
+def div(x, y):
+    return x / y
+
+
+def rem(x, y):
+    return x % y
+
+
+number1 = int(input("\nEnter first number: "))
+number2 = int(input("Enter second number: "))
+print()
+print("Select Operation: \n 1) Addition \n 2) Subtraction \n 3) Multiplication \n 4) Division \n 5) Remainder")
+choice = input("\nEnter choice 1/2/3/4/5: ")
+
+if choice == "1":
+    print("\nSum is " + str(add(number1, number2)))
+elif choice == "2":
+    print("\nDifference is " + str(sub(number1, number2)))
+elif choice == "3":
+    print("\nProduct is " + str(mul(number1, number2)))
+elif choice == "4":
+    print("\nQuotient is " + str(div(number1, number2)))
+elif choice == "5":
+    print("\nRemainder is " + str(rem(number1, number2)))
+else:
+    print("Invalid input")
